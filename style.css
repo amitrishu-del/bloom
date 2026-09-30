@@ -1,0 +1,140 @@
+/* Bloom — support site. Colours are Bloom's own (Theme.swift): night teal, lotus pink and gold
+   after dark; cream and ink by day. Follows the visitor's light/dark setting, like the app. */
+:root {
+  --bg: #f6f4f1;
+  --bg-2: #eef1f2;
+  --card: #ffffff;
+  --ink: #16262c;
+  --dim: #5d7376;
+  --line: rgba(22, 38, 44, 0.12);
+  --rose: #c2607e;
+  --gold: #a8761a;
+  --button: #16262c;
+  --button-ink: #f3f7f6;
+  --shadow: 0 24px 60px rgba(22, 38, 44, 0.18);
+  --serif: "New York", ui-serif, Georgia, "Times New Roman", serif;
+  --sans: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0b161c;
+    --bg-2: #13232b;
+    --card: #182a33;
+    --ink: #e7ede9;
+    --dim: #9fb0ae;
+    --line: rgba(231, 237, 233, 0.13);
+    --rose: #e58aa2;
+    --gold: #f2c469;
+    --button: #e7ede9;
+    --button-ink: #12222a;
+    --shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
+  }
+}
+
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font: 17px/1.6 var(--sans);
+}
+img { max-width: 100%; display: block; }
+a { color: var(--rose); }
+.wrap { max-width: 1040px; margin: 0 auto; padding: 0 20px; }
+
+/* Header: small and quiet — the app, not a banner, is the hero. */
+.top {
+  position: sticky; top: 0; z-index: 10;
+  background: color-mix(in srgb, var(--bg) 88%, transparent);
+  backdrop-filter: saturate(160%) blur(14px);
+  -webkit-backdrop-filter: saturate(160%) blur(14px);
+  border-bottom: 1px solid var(--line);
+}
+.top .wrap { display: flex; align-items: center; justify-content: space-between; height: 60px; }
+.brand { display: flex; align-items: center; gap: 10px; color: var(--ink); text-decoration: none; }
+.brand img { width: 34px; height: 34px; border-radius: 8px; }
+.brand span { font: italic 26px/1 var(--serif); }
+.top nav { display: flex; gap: 22px; }
+.top nav a { color: var(--dim); text-decoration: none; font-size: 15px; }
+.top nav a:hover { color: var(--ink); }
+
+/* Hero: the words and the app side by side. */
+.hero {
+  background: radial-gradient(ellipse at 70% 30%, color-mix(in srgb, var(--rose) 16%, transparent), transparent 60%),
+              linear-gradient(var(--bg), var(--bg-2));
+}
+.hero .wrap {
+  display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 40px; align-items: center;
+  padding-top: 56px; padding-bottom: 56px;
+}
+.hero h1 { font: 400 clamp(40px, 6vw, 62px)/1.08 var(--serif); margin: 0 0 16px; letter-spacing: -0.01em; }
+.hero p.lede { font-size: 19px; color: var(--dim); margin: 0 0 28px; max-width: 30em; }
+.store {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: var(--button); color: var(--button-ink);
+  padding: 14px 24px; border-radius: 999px; text-decoration: none;
+  font-weight: 600; font-size: 16px; box-shadow: var(--shadow);
+}
+.store[aria-disabled="true"] { cursor: default; }
+.store small { font-weight: 500; opacity: 0.75; }
+.facts { margin: 16px 0 0; color: var(--dim); font-size: 14px; }
+.phone {
+  display: block; justify-self: center; width: min(300px, 78vw);
+  border-radius: 44px; overflow: hidden; box-shadow: var(--shadow);
+  border: 1px solid var(--line);
+}
+.phone img { width: 100%; height: auto; }
+
+/* Sections */
+section { padding: 56px 0; scroll-margin-top: 60px; } /* clear the sticky header on nav jumps */
+section h2 { font: 400 34px/1.2 var(--serif); margin: 0 0 8px; }
+section .sub { color: var(--dim); margin: 0 0 28px; }
+.alt { background: var(--bg-2); }
+
+#screens .wrap { text-align: center; }
+/* Three screens side by side, always fully in view (no sideways scrolling). */
+.shots { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; max-width: 760px; margin: 0 auto; }
+.shots figure { margin: 0; }
+.shots img { width: 100%; height: auto; border-radius: 28px; border: 1px solid var(--line); box-shadow: var(--shadow); }
+.shots figcaption { color: var(--dim); font-size: 14px; text-align: center; margin-top: 14px; }
+
+.features { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.feature { background: var(--card); border: 1px solid var(--line); border-radius: 18px; padding: 20px 22px; }
+.feature h3 { font-size: 17px; margin: 0 0 4px; }
+.feature p { margin: 0; color: var(--dim); font-size: 15px; }
+.feature .mark { display: block; width: 26px; height: 26px; margin-bottom: 10px; color: var(--rose); }
+
+.note { background: var(--card); border: 1px solid var(--line); border-radius: 18px; padding: 22px 24px; max-width: 720px; }
+.note p { margin: 0 0 10px; }
+.note p:last-child { margin: 0; }
+.big { font: 400 24px/1.35 var(--serif); }
+
+details { border-bottom: 1px solid var(--line); padding: 14px 0; max-width: 720px; }
+details summary { cursor: pointer; font-weight: 600; list-style: none; }
+details summary::-webkit-details-marker { display: none; }
+details summary::after { content: "+"; float: right; color: var(--dim); font-weight: 400; }
+details[open] summary::after { content: "–"; }
+details p { color: var(--dim); margin: 8px 0 0; }
+
+footer { border-top: 1px solid var(--line); padding: 28px 0 40px; color: var(--dim); font-size: 13px; }
+footer p { margin: 0 0 8px; max-width: 760px; }
+
+/* Privacy policy page */
+.policy { max-width: 720px; padding-top: 44px; padding-bottom: 20px; }
+.policy h1 { font: 400 42px/1.15 var(--serif); margin: 0 0 6px; }
+.policy h2 { font: 600 19px/1.3 var(--sans); margin: 30px 0 6px; }
+.policy p, .policy li { color: var(--ink); }
+.policy .meta { color: var(--dim); margin: 0 0 24px; }
+
+@media (max-width: 820px) {
+  .hero .wrap { grid-template-columns: 1fr; gap: 36px; padding-top: 40px; text-align: center; }
+  .hero p.lede { margin-left: auto; margin-right: auto; }
+  .features { grid-template-columns: 1fr; }
+  section h2 { font-size: 28px; }
+  .shots { gap: 10px; }
+  .shots img { border-radius: 14px; }
+  .shots figcaption { font-size: 12px; line-height: 1.35; }
+  .top nav { gap: 16px; }
+  .top nav a.optional { display: none; }
+}
